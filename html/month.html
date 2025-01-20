@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Prayer Times</title>
+    <link rel="stylesheet" href="../css/styleMonth.css">
+    <script src="../js/PrayTimes.js"></script>
+    <script src="../js/jsPDF-master/dist/jspdf.umd.min.js"></script>
+    <script src="../js/jsPDF-AutoTable-master/dist/jspdf.plugin.autotable.min.js"></script>    
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <div id="container-menu">
+                <img id="menu" src="../images/menu.png" alt="home">
+            </div>
+            <div class="title">
+                <h1>Prayer Time Web App</h1>
+                <p>By Hiba</p>
+            </div>
+
+        </div>
+        <div class="side-menu" id="side-menu">
+            <a href="../home.html">
+                <p>Home</p>
+            </a>
+            <a href="day.html">
+                <p>Prayer Times per Day</p>
+            </a>
+            <a href="#">
+                <p>Prayer Times per Month</p>
+            </a>
+        </div>
+
+        <h2>Prayer Times for the Month</h2>
+        <h2 id="live-clock"></h2>
+        <div class="selection">
+            <select id="method-select">
+                <option id="MWL" value="MWL">Muslim World League</option>
+                <option id="ISNA" value="ISNA">Islamic Society of North America</option>
+                <option id="Egypt" value="Egypt">Egypt</option>
+                <option id="Makkah" value="Makkah">Makkah</option>
+                <option id="Karachi" value="Karachi">Karachi</option>
+                <option id="Tehran" value="Tehran">Tehran</option>
+                <option id="Jafari" value="Jafari">Jafari</option>
+            </select>
+            <button id="get-location">Get Prayer Times</button>
+        </div>
+
+        <h2>Prayer Times</h2>
+        <h3 id="name-month">Month</h3>
+        <button id="download-pdf">Download PDF</button>
+
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Data</div>
+                <div class="col col-2">Fajr</div>
+                <div class="col col-3">Alba</div>
+                <div class="col col-4">Dhuhr</div>
+                <div class="col col-5">Asr</div>
+                <div class="col col-6">Maghrib</div>
+                <div class="col col-7">Isha</div>
+            </li>
+            <div id="monthly-grid"></div>
+        </ul>
+    </div>
+
+    <script src="../js/scriptMonth.js"></script>
+</body>
+
+
+</html>

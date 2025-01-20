@@ -1,0 +1,214 @@
+/* 
+COLOR PALETTE 
+  background: lighter: #cad2c5
+  panels salaat: light: #84a98c
+  base: #52796f
+  big panel: dark: #354f52
+  title: darker: #2f3e46
+  
+  Night Mode
+  background / panels salaat: #34495e
+  text-color: #ecf0f1
+  big panel: #243342
+*/
+
+/* CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Utilities */
+.container {
+	margin: 0 auto;
+	max-width: 540px;
+}
+
+#container-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 16px;
+	z-index: 1000;
+}
+
+#menu {
+	cursor: pointer;
+	width: 50px;
+	height: auto;
+	margin-right: 20px;
+}
+
+.head {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+}
+
+.side-menu {
+	background-color: #84a98c;
+	color: #2f3e46;
+	font-weight: bolder;
+	text-transform: uppercase;
+	border-radius: 0 0 16px 0;
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 16px;
+	z-index: 500;
+	width: 30%;
+	max-width: 300px;
+	height: 100vh;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.side-menu a {
+	color: #2f3e46;
+	text-decoration: none;
+}
+
+.side-menu p {
+	margin: 16px 0;
+	padding: 10px;
+	transition: background-color 0.3s;
+}
+
+.side-menu~p {
+	margin: 60px;
+}
+
+.side-menu p:hover {
+	background-color: #52796f;
+	color: #b0bda8;
+}
+
+body {
+	line-height: 1;
+	font-family: Inter, sans-serif;
+	background-color: #b0bda8;
+	color: #2f3e46;
+}
+
+#get-location {
+	border-radius: 16px;
+	padding: 16px;
+	background-color: #52796f;
+	border: none;
+	cursor: pointer;
+	color: #b0bda8;
+	text-transform: uppercase;
+	font-weight: bolder;
+}
+
+#live-clock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#salaats {
+	margin: 16px;
+	padding: 16px;
+	border-radius: 16px;
+	background-color: #52796f;
+}
+
+.salaat {
+	margin: 16px;
+	padding: 16px;
+	border-radius: 16px;
+	background-color: #84a98c;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: opacity 0.5s, translate 1s;
+}
+
+.title {
+	margin: 0 auto;
+	padding: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	text-align: left;
+	width: 100%;
+	max-width: 540px;
+	margin-left: 10%;
+}
+
+.salaat p {
+	font-weight: bolder;
+	font-size: larger;
+}
+
+.selection {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+}
+
+#method-select {
+	border: none;
+	border-radius: 16px;
+	height: 28px;
+	padding: 4px;
+	background-color: #84a98c;
+	color: #2f3e46;
+	font-weight: bolder;
+	text-transform: uppercase;
+}
+
+.head {
+	display: flex;
+}
+
+#container-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 16px;
+	z-index: 1000;
+}
+
+#menu {
+	cursor: pointer;
+	width: 50px;
+	height: auto;
+}
+
+.js-loading {
+	.salaat {
+		opacity: 0;
+		translate: 0 30px;
+	}
+}
+
+
+/* Modalità notturna */
+body.night-mode,
+body.night-mode .salaat,
+.side-menu p:hover {
+	background-color: #34495e;
+	color: #ecf0f1;
+}
+
+body.night-mode #live-clock {
+	color: #ecf0f1;
+}
+
+body.night-mode #salaats,
+body.night-mode #method-select,
+body.night-mode #get-location,
+body.night-mode .side-menu  {
+	background-color: #243342;
+	color: #ecf0f1;
+}
+

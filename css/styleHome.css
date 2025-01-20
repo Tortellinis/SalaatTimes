@@ -1,0 +1,186 @@
+/* 
+COLOR PALETTE 
+  background: lighter: #cad2c5
+  panels salaat: light: #84a98c
+  base: #52796f
+  big panel: dark: #354f52
+  title: darker: #2f3e46
+
+  Night Mode
+  background / panels salaat: #34495e
+  text-color: #ecf0f1
+  big panel: #243342
+*/
+
+/* CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+body {
+	line-height: 1;
+	font-family: Inter, sans-serif;
+	background-color: #b0bda8;
+	color: #2f3e46;
+}
+
+.title {
+	margin: 0 auto;
+	padding: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	text-align: left;
+	width: 100%;
+	max-width: 540px;
+	margin-left: 10%;
+}
+
+button {
+    border-radius: 16px;
+    padding: 16px;
+    background-color: #52796f;
+    border: none;
+    cursor: pointer;
+    color: #b0bda8;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #354f52;
+}
+
+#buttons button {
+    width: 200px;
+}
+
+#buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media all and (max-width: 540px) {
+    .side-menu {
+        width: 60%;
+    }
+    
+    .title {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    #menu {
+        margin-right: 10px;
+    }
+
+    #buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+#live-clock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#container-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 16px;
+    z-index: 1000;
+}
+
+#menu {
+    cursor: pointer;
+    width: 50px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: #84a98c;
+}
+
+.side-menu {
+	background-color: #84a98c;
+	color: #2f3e46;
+	font-weight: bolder;
+	text-transform: uppercase;
+	border-radius: 0 0 16px 0;
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 16px;
+	z-index: 500;
+	width: 30%;
+	max-width: 300px;
+	height: 100vh;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.side-menu a {
+	color: #2f3e46;
+	text-decoration: none;
+}
+
+.side-menu p {
+	margin: 16px 0;
+	padding: 10px;
+	transition: background-color 0.3s;
+}
+
+.side-menu p:hover {
+	background-color: #52796f;
+	color: #b0bda8;
+}
+
+/* Night Mode */
+body.night-mode,
+body.night-mode .head,
+.side-menu p:hover {
+	background-color: #34495e;
+	color: #ecf0f1;
+}
+
+body.night-mode #live-clock {
+	color: #ecf0f1;
+}
+
+body.night-mode button,
+body.night-mode head,
+body.night-mode .side-menu {
+	background-color: #243342;
+	color: #ecf0f1;
+}
+
+.js-loading {
+	button {
+		opacity: 0;
+		translate: 0 30px;
+	}
+}

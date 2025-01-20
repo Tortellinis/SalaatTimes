@@ -1,0 +1,286 @@
+/* 
+COLOR PALETTE 
+  background: lighter: #cad2c5
+  panels salaat: light: #84a98c
+  base: #52796f
+  big panel: dark: #354f52
+  title: darker: #2f3e46
+  
+  Night Mode
+  background / panels salaat: #34495e
+  text-color: #ecf0f1
+  big panel: #243342
+*/
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+  font-family: Inter, sans-serif;
+  background-color: #b0bda8;
+  color: #2f3e46;
+}
+
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#get-location {
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #52796f;
+  border: none;
+  cursor: pointer;
+  color: #b0bda8;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+#download-pdf {
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #52796f;
+  border: none;
+  cursor: pointer;
+  color: #b0bda8;
+  text-transform: uppercase;
+  font-weight: bolder;
+  display: none;
+}
+
+#live-clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  max-width: 540px;
+  margin-left: 30%;
+}
+
+.selection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+#method-select {
+  border: none;
+  border-radius: 16px;
+  height: 28px;
+  padding: 4px;
+  background-color: #84a98c;
+  color: #2f3e46;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+#container-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 16px;
+  z-index: 1000;
+}
+
+#menu {
+  cursor: pointer;
+  width: 50px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.side-menu {
+  background-color: #84a98c;
+  color: #2f3e46;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-radius: 0 0 16px 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 16px;
+  z-index: 500;
+  width: 30%;
+  max-width: 300px;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.side-menu a {
+  color: #2f3e46;
+  text-decoration: none;
+}
+
+.side-menu p {
+  margin: 16px 0;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.side-menu p:hover {
+  background-color: #52796f;
+  color: #b0bda8;
+}
+
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+#name-month {
+  font-weight: bold;
+  text-align: center;
+}
+
+small {
+  font-size: 0.5em;
+}
+
+.responsive-table {
+  margin-top: 20px;
+}
+
+.responsive-table li {
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.table-header {
+  background-color: #52796f;
+  color: #b0bda8;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.table-row {
+  background-color: #cad2c5;
+  color: #2f3e46;
+  font-size: large;
+}
+
+.col-1 {
+  flex-basis: 20%;
+}
+
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7 {
+  flex-basis: 16%;
+}
+
+.table-row.today {
+  background-color:#84a98c;
+  color: #cad2c5;
+}
+
+
+@media all and (max-width: 540px) {
+  .table-header {
+    display: none !important;
+  }
+
+  .responsive-table li {
+    display: block;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .col[data-label]:before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7 {
+    flex-basis: 100%;
+  }
+  
+}
+
+.js-loading {
+	.table-row {
+		opacity: 0;
+		translate: 0 30px;
+	}
+}
+
+@media all and (max-width: 780px) {
+  .title {
+    margin-left: 10%;
+  }
+}
+
+/* Night-mode */
+body.night-mode,
+body.night-mode .table-row,
+.side-menu p:hover  {
+	background-color: #34495e;
+	color: #ecf0f1;
+}
+
+
+body.night-mode #live-clock {
+	color: #ecf0f1;
+}
+
+body.night-mode .table-header,
+body.night-mode #method-select,
+body.night-mode #get-location, 
+body.night-mode #download-pdf,
+body.night-mode .side-menu{
+	background-color: #243342;
+	color: #ecf0f1;
+}
