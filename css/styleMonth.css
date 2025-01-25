@@ -28,92 +28,47 @@ body {
 
 .container {
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-#get-location {
-  border-radius: 16px;
-  padding: 16px;
-  background-color: #52796f;
-  border: none;
-  cursor: pointer;
-  color: #b0bda8;
-  text-transform: uppercase;
-  font-weight: bolder;
-}
-
-#download-pdf {
-  border-radius: 16px;
-  padding: 16px;
-  background-color: #52796f;
-  border: none;
-  cursor: pointer;
-  color: #b0bda8;
-  text-transform: uppercase;
-  font-weight: bolder;
-  display: none;
-}
-
-#live-clock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.title {
-  margin: 0 auto;
-  padding: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  text-align: left;
-  width: 100%;
-  max-width: 540px;
-  margin-left: 30%;
-}
-
-.selection {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-}
-
-#method-select {
-  border: none;
-  border-radius: 16px;
-  height: 28px;
-  padding: 4px;
-  background-color: #84a98c;
-  color: #2f3e46;
-  font-weight: bolder;
-  text-transform: uppercase;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 #container-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  padding: 16px;
+  bottom: 16px;
+  left: 16px;
   z-index: 1000;
 }
 
 #menu {
-  cursor: pointer;
-  width: 50px;
-  height: auto;
-  margin-right: 20px;
+cursor: pointer;
+width: 50px;
+height: auto;
+}
+
+#menu:hover {
+  scale: 110% 110%;
+  transition-duration: 300ms;
 }
 
 .head {
-  display: flex;
-  align-items: center;
-  padding: 16px;
+	display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: #84a98c;
+    border-radius: 16px;
+}
+
+.title {
+	margin: 0 auto;
+	padding: 16px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	text-align: left;
+	width: 100%;
+	max-width: 540px;
+	margin-left: 10%;
 }
 
 .side-menu {
@@ -121,31 +76,43 @@ body {
   color: #2f3e46;
   font-weight: bolder;
   text-transform: uppercase;
-  border-radius: 0 0 16px 0;
+  border-radius: 16px 16px 0 0;
   visibility: hidden;
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
   padding: 16px;
-  z-index: 500;
-  width: 30%;
-  max-width: 300px;
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 500;
+  transition: transform 0.3s ease;
+  transform: translateY(100%);
+gap: 10px;
+}
+
+.side-menu.visible {
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .side-menu a {
   color: #2f3e46;
   text-decoration: none;
+width: 100%;
+display: flex;
+flex-direction: column;
 }
 
 .side-menu p {
-  margin: 16px 0;
   padding: 10px;
   transition: background-color 0.3s;
+  text-align: center;
 }
 
 .side-menu p:hover {
@@ -153,6 +120,50 @@ body {
   color: #b0bda8;
 }
 
+#live-clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+  font-size: xx-large;
+}
+
+button {
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #52796f;
+  border: none;
+  cursor: pointer;
+  color: #b0bda8;
+  text-transform: uppercase;
+  font-weight: bolder;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #354f52;
+  scale: 110% 110%;
+  transition-duration: 300ms;
+}
+
+.selection {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+}
+
+#method-select {
+	border: none;
+	border-radius: 16px;
+	height: 28px;
+	padding: 4px;
+	background-color: #84a98c;
+	color: #2f3e46;
+	font-weight: bolder;
+	text-transform: uppercase;
+}
 
 h2 {
   font-size: 26px;
@@ -197,6 +208,9 @@ small {
 
 .col-1 {
   flex-basis: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .col-2,
@@ -206,15 +220,101 @@ small {
 .col-6,
 .col-7 {
   flex-basis: 16%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.table-row.today {
+.table-row .today {
   background-color:#84a98c;
   color: #cad2c5;
 }
 
+@media all and (max-width: 750px) {
 
-@media all and (max-width: 540px) {
+  .title {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  #live-clock {
+    font-size: xx-large;
+  }
+
+  #container-menu {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    z-index: 1000;
+  }
+
+  #menu {
+    cursor: pointer;
+    width: 50px;
+    height: auto;
+  }
+}
+
+@media all and (min-width: 751px) {
+
+  .side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
+    max-width: 300px;
+    height: 100vh;
+    visibility: hidden;
+    padding: 16px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 0 0 16px 0;
+    transform: translateX(-100%);
+    gap: 10px;
+  }
+
+  .side-menu.visible {
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  #container-menu {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1000;
+  }
+
+  #menu {
+    width: 60px;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .col-1,
+  .col-2,
+  .col-3,
+  .col-4,
+  .col-5,
+  .col-6,
+  .col-7,
+  .table-header {
+    font-size: small;
+  }
+
+  .responsive-table li {
+    padding: 20px;
+  }
+
+  #menu {
+      width: 45px;
+  }
+}
+
+@media all and (max-width: 370px) {
   .table-header {
     display: none !important;
   }
@@ -257,30 +357,38 @@ small {
 	}
 }
 
-@media all and (max-width: 780px) {
-  .title {
-    margin-left: 10%;
-  }
-}
-
 /* Night-mode */
-body.night-mode,
-body.night-mode .table-row,
-.side-menu p:hover  {
+body.night-mode {
 	background-color: #34495e;
 	color: #ecf0f1;
 }
 
+body.night-mode .table-row {
+	background-color: #51708f;
+	color: #ecf0f1;
+}
 
-body.night-mode #live-clock {
+body.night-mode #live-clock,
+body.night-mode .side-menu p {
 	color: #ecf0f1;
 }
 
 body.night-mode .table-header,
 body.night-mode #method-select,
-body.night-mode #get-location, 
-body.night-mode #download-pdf,
-body.night-mode .side-menu{
+body.night-mode button,
+body.night-mode .head,
+body.night-mode .side-menu,
+body.night-mode .today {
 	background-color: #243342;
 	color: #ecf0f1;
+}
+
+body.night-mode button:hover {
+	background-color: #233241;
+	color: #ecf0f1;
+}
+
+body.night-mode .side-menu p:hover {
+    background-color: #34495e;
+    color: #ecf0f1;
 }

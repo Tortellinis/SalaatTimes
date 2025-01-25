@@ -1,41 +1,52 @@
 const calculationMethod = ['MWL', 'ISNA', 'Egypt', 'Makkah', 'Karachi', 'Tehran', 'Jafari'];
 const htmlElement = document.documentElement;
 
-// Function to update the prayer times method
 function getMethod() {
     return document.getElementById('method-select').value;
 }
 
-// Function to display the live clock
-window.onload = function () {
-    displayClock();
-};
-
+window.onload = displayClock();
 function displayClock() {
-    const display = new Date().toLocaleTimeString();
+    var options = {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    };
+    var display = new Date().toLocaleTimeString([], options);
     document.getElementById('live-clock').innerText = display;
-    setTimeout(displayClock, 1000); // Update every second
+    setTimeout(displayClock, 1000);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     const menuButton = document.getElementById("menu");
     const sideMenu = document.getElementById("side-menu");
 
-    
+    // Toggle side menu visibility
     menuButton.addEventListener("click", function () {
-        sideMenu.style.visibility = sideMenu.style.visibility === "visible" ? "hidden" : "visible";
+        sideMenu.classList.toggle("visible");
     });
 
-    
+    // Close side menu when clicking outside
     document.addEventListener("click", function (event) {
         const isClickInsideMenu = sideMenu.contains(event.target);
         const isClickInsideButton = menuButton.contains(event.target);
 
-        if (!isClickInsideMenu && !isClickInsideButton) {
-            sideMenu.style.visibility = "hidden";
+        if (!isClickInsideMenu && !isClickInsideButton && sideMenu.classList.contains("visible")) {
+            sideMenu.classList.remove("visible");
         }
     });
 });
+
+// Night mode if night
+const localTime = new Date().getHours();
+
+if (localTime >= 18 || localTime < 6) {
+    document.body.classList.add('night-mode');
+    document.getElementById('menu').src = "../images/menu(1).png";
+} else {
+    document.body.classList.remove('night-mode');
+    document.getElementById('menu').src = "../images/menu.png";
+}
 
 // Load PrayTimes.js and get the method from the dropdown
 document.getElementById('get-location').addEventListener('click', function () {
@@ -49,17 +60,6 @@ document.getElementById('get-location').addEventListener('click', function () {
         const longitude = position.coords.longitude;
         const currentDate = new Date();
         const currentDay = currentDate.getDate();
-
-        
-        const localTime = new Date().getHours();
-
-        if (localTime >= 18 || localTime < 6) {
-            document.body.classList.add('night-mode');
-            document.getElementById('menu').src = "../images/menu(1).png";
-        } else {
-            document.body.classList.remove('night-mode');
-            document.getElementById('menu').src = "../images/menu.png";
-        }
 
         let timeZone = currentDate.getTimezoneOffset() / -60;
         // Fix timezone adjustment by subtracting 1 hour
