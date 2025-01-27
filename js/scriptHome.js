@@ -1,4 +1,3 @@
-
 window.onload = displayClock();
 
 function displayClock() {
@@ -41,4 +40,3 @@ if (localTime >= 18 || localTime < 6) {
     document.body.classList.remove('night-mode');
     document.getElementById('menu').src = "../images/menu.png";
 }
-

@@ -165,6 +165,13 @@ button:hover {
 	text-transform: uppercase;
 }
 
+#method-select:hover {
+  background-color: #52796f;
+  color: #b0bda8;
+  scale: 110% 110%;
+  transition-duration: 300ms;
+}
+
 h2 {
   font-size: 26px;
   margin: 20px 0;
@@ -389,6 +396,6 @@ body.night-mode button:hover {
 }
 
 body.night-mode .side-menu p:hover {
-    background-color: #34495e;
-    color: #ecf0f1;
+  background-color: #34495e;
+  color: #ecf0f1;
 }

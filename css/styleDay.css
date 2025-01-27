@@ -188,6 +188,13 @@ button:hover {
 	text-transform: uppercase;
 }
 
+#method-select:hover {
+    background-color: #52796f;
+    color: #b0bda8;
+    scale: 110% 110%;
+    transition-duration: 300ms;
+}
+
 @media all and (max-width: 750px) {
 
     .title {

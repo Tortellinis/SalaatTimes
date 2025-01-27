@@ -87,4 +87,3 @@ document.getElementById('get-location').addEventListener('click', function () {
         alert('Error getting location: ' + error.message);
     });
 });
-
