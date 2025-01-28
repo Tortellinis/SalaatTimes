@@ -165,6 +165,11 @@ button:hover {
 	text-transform: uppercase;
 }
 
+#method-select:hover {
+	scale: 110% 110%;
+	transition-duration: 300ms;
+}
+
 h2 {
   font-size: 26px;
   margin: 20px 0;
@@ -225,7 +230,7 @@ small {
   align-items: center;
 }
 
-.table-row .today {
+.today {
   background-color:#84a98c;
   color: #cad2c5;
 }
