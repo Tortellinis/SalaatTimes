@@ -188,6 +188,11 @@ button:hover {
 	text-transform: uppercase;
 }
 
+#method-select:hover {
+	scale: 110% 110%;
+	transition-duration: 300ms;
+}
+
 @media all and (max-width: 750px) {
 
     .title {
