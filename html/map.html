@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="js-loading">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Time Web App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Stile -->
+    <link rel="stylesheet" href="../css/styleMap.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <div id="container-menu">
+                <img id="menu" src="../images/menu.png" alt="home">
+            </div>
+            <div class="title">
+                <h1>Prayer Time Web App</h1>
+                <p>By Tortellinis</p>
+            </div>
+
+        </div>
+
+        <!-- Sidebar menu -->
+        <div class="side-menu" id="side-menu">
+            <a href="../index.html">
+                <p>Home</p>
+            </a>
+            <a href="../html/day.html">
+                <p>Prayer Times per Day</p>
+            </a>
+            <a href="../html/month.html">
+                <p>Prayer Times per Month</p>
+            </a>
+        </div>
+
+        <h1 class="title">Mosques of Italy</h1>
+
+        <button id="get-location">Show my location</button>
+
+        <div id="map"></div>
+
+    </div>
+
+    <!-- Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <script src="../js/mosques.js"></script>
+
+    <script src="../js/scriptMap.js"></script>
+</body>
+
+</html>

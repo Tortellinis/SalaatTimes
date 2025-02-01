@@ -1,0 +1,70 @@
+    
+    // Initialize the map centered on Italy
+    var map = L.map('map').setView([41.87194, 12.56738], 6);
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Check if mosques are available
+    if (window.mosques && Array.isArray(window.mosques)) {
+        // Loop through the array and add markers for each mosque
+        window.mosques.forEach(function(mosque) {
+            L.marker([mosque.lat, mosque.lon]).addTo(map)
+                .bindPopup("<b>" + mosque.name + "</b><br>" + mosque.address);
+        });
+    }
+
+    document.getElementById('get-location').addEventListener('click', function () {
+        if (navigator.geolocation) {
+            // Request the user's location
+            navigator.geolocation.getCurrentPosition(function (position) {
+                htmlElement.className = '';
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+    
+                // Create a marker for user's location and add to the map
+                var userMarker = L.marker([latitude, longitude]).addTo(map)
+                    .bindPopup("<b>Your Location</b>").openPopup();
+
+                // Zoom to the user's location
+                map.setView([latitude, longitude], 13);
+                
+            }, function (error) {
+                alert('Error getting location: ' + error.message);
+            });
+        } else {
+            alert('Geolocation is not supported by your browser.');
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuButton = document.getElementById("menu");
+        const sideMenu = document.getElementById("side-menu");
+    
+        // Toggle side menu visibility
+        menuButton.addEventListener("click", function () {
+            sideMenu.classList.toggle("visible");
+        });
+    
+        // Close side menu when clicking outside
+        document.addEventListener("click", function (event) {
+            const isClickInsideMenu = sideMenu.contains(event.target);
+            const isClickInsideButton = menuButton.contains(event.target);
+    
+            if (!isClickInsideMenu && !isClickInsideButton && sideMenu.classList.contains("visible")) {
+                sideMenu.classList.remove("visible");
+            }
+        });
+    });
+    
+    // Night mode if night
+    const localTime = new Date().getHours();
+    if (localTime >= 18 || localTime < 6) {
+        document.body.classList.add('night-mode');
+        document.getElementById('menu').src = "../images/menu1.png";
+    } else {
+        document.body.classList.remove('night-mode');
+        document.getElementById('menu').src = "../images/menu.png";
+    }

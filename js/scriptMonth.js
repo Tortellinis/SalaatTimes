@@ -50,91 +50,94 @@ if (localTime >= 18 || localTime < 6) {
 
 // Load PrayTimes.js and get the method from the dropdown
 document.getElementById('get-location').addEventListener('click', function () {
-    const method = getMethod();
-    const prayerTimes = new PrayTimes(method);
-    prayerTimes.adjust({ imsak: 10, dhuhr: 0, asr: 'Standard', highLats: 'AngleBased' });
 
-    // Get user's location and calculate prayer times
-    navigator.geolocation.getCurrentPosition(function (position) {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        const currentDate = new Date();
-        const currentDay = currentDate.getDate();
+    if (navigator.geolocation) {
+        const method = getMethod();
+        const prayerTimes = new PrayTimes(method);
+        prayerTimes.adjust({ imsak: 10, dhuhr: 0, asr: 'Standard', highLats: 'AngleBased' });
 
-        let timeZone = currentDate.getTimezoneOffset() / -60;
-        // Fix timezone adjustment by subtracting 1 hour
-        //timeZone -= 1;
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
-        console.log(month);
+        // Get user's location and calculate prayer times
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const currentDate = new Date();
+            const currentDay = currentDate.getDate();
+            console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
 
-        let monthVar = month + 1;
-        if (monthVar > 12) {
-            monthVar = 1;
-        }
-        let nameMonth = '';
-        switch (monthVar) {
-            case 1:
-                nameMonth = "January";
-                break;
-            case 2:
-                nameMonth = "February";
-                break;
-            case 3:
-                nameMonth = "March";
-                break;
-            case 4:
-                nameMonth = "April";
-                break;
-            case 5:
-                nameMonth = "May";
-                break;
-            case 6:
-                nameMonth = "June";
-                break;
-            case 7:
-                nameMonth = "July";
-                break;
-            case 8:
-                nameMonth = "August";
-                break;
-            case 9:
-                nameMonth = "September";
-                break;
-            case 10:
-                nameMonth = "October";
-                break;
-            case 11:
-                nameMonth = "November";
-                break;
-            case 12:
-                nameMonth = "December";
-                break;
-            default:
-                nameMonth = "Invalid month number";
-                break;
-        }
+            let timeZone = currentDate.getTimezoneOffset() / -60;
+            // Fix timezone adjustment by subtracting 1 hour
+            //timeZone -= 1;
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            console.log(month);
 
-        document.getElementById('name-month').innerText = nameMonth;
+            let monthVar = month + 1;
+            if (monthVar > 12) {
+                monthVar = 1;
+            }
+            let nameMonth = '';
+            switch (monthVar) {
+                case 1:
+                    nameMonth = "January";
+                    break;
+                case 2:
+                    nameMonth = "February";
+                    break;
+                case 3:
+                    nameMonth = "March";
+                    break;
+                case 4:
+                    nameMonth = "April";
+                    break;
+                case 5:
+                    nameMonth = "May";
+                    break;
+                case 6:
+                    nameMonth = "June";
+                    break;
+                case 7:
+                    nameMonth = "July";
+                    break;
+                case 8:
+                    nameMonth = "August";
+                    break;
+                case 9:
+                    nameMonth = "September";
+                    break;
+                case 10:
+                    nameMonth = "October";
+                    break;
+                case 11:
+                    nameMonth = "November";
+                    break;
+                case 12:
+                    nameMonth = "December";
+                    break;
+                default:
+                    nameMonth = "Invalid month number";
+                    break;
+            }
 
-        // Get total days in the current month
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
+            document.getElementById('name-month').innerText = nameMonth;
 
-        // Clear previous results
-        const grid = document.getElementById('monthly-grid');
-        grid.innerHTML = '';
+            // Get total days in the current month
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        // Loop through all days in the month
-        for (let day = 1; day <= daysInMonth; day++) {
-            const date = new Date(year, month, day);
-            const times = prayTimes.getTimes(date, [latitude, longitude], timeZone);
+            // Clear previous results
+            const grid = document.getElementById('monthly-grid');
+            grid.innerHTML = '';
 
-            // Check if the date matches the current date
-            const isToday = day === currentDay;
+            // Loop through all days in the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const times = prayTimes.getTimes(date, [latitude, longitude], timeZone);
 
-            // Create a new table row for each day with prayer times
-            const rowClass = isToday ? 'table-row today' : 'table-row'; // Add 'today' class if it matches
-            const row = `<li class="${rowClass}">
+                // Check if the date matches the current date
+                const isToday = day === currentDay;
+
+                // Create a new table row for each day with prayer times
+                const rowClass = isToday ? 'table-row today' : 'table-row'; // Add 'today' class if it matches
+                const row = `<li class="${rowClass}">
         <div class="col col-1" data-label="Data">${date.toDateString()}</div>
         <div class="col col-2" data-label="Fajr">${times.fajr}</div>
         <div class="col col-3" data-label="Alba">${times.sunrise}</div>
@@ -144,43 +147,49 @@ document.getElementById('get-location').addEventListener('click', function () {
         <div class="col col-7" data-label="Isha">${times.isha}</div>
     </li>`;
 
-            grid.insertAdjacentHTML('beforeend', row);
-        }
+                grid.insertAdjacentHTML('beforeend', row);
+            }
 
-        document.getElementById('download-pdf').style.display = 'block';
+            document.getElementById('download-pdf').style.display = 'block';
 
-        // Print table PDF
-        document.getElementById('download-pdf').addEventListener('click', function () {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+            // Print table PDF
+            document.getElementById('download-pdf').addEventListener('click', function () {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
 
-            // Prepare data
-            const headers = ['Date', 'Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-            const rows = [];
+                // Prepare data
+                const headers = ['Date', 'Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+                const rows = [];
 
-            const prayerRows = document.querySelectorAll('.table-row'); // Get all prayer rows
-            prayerRows.forEach(row => {
-                const cols = row.querySelectorAll('.col');
-                const rowData = [];
-                cols.forEach(col => {
-                    rowData.push(col.innerText); // Collect text from each column
+                const prayerRows = document.querySelectorAll('.table-row'); // Get all prayer rows
+                prayerRows.forEach(row => {
+                    const cols = row.querySelectorAll('.col');
+                    const rowData = [];
+                    cols.forEach(col => {
+                        rowData.push(col.innerText); // Collect text from each column
+                    });
+                    rows.push(rowData);
                 });
-                rows.push(rowData);
+
+                // Add headers
+                doc.autoTable({
+                    head: [headers],
+                    body: rows,
+                });
+
+                // Create name with month and year
+                const filename = `prayer_times_${nameMonth}_${year}.pdf`;
+
+                // Save PDF
+                doc.save(filename);
             });
 
-            // Add headers
-            doc.autoTable({
-                head: [headers],
-                body: rows,
-            });
-
-            // Create name with month and year
-            const filename = `prayer_times_${nameMonth}_${year}.pdf`;
-
-            // Save PDF
-            doc.save(filename);
+        }, function (error) {
+            // Handle error in getting geolocation
+            alert('Error getting location: ' + error.message);
         });
-
-    });
+    } else {
+        alert('Geolocation is not supported by your browser.');
+    }
 
 });
