@@ -1,11 +1,10 @@
-/* 
-COLOR PALETTE 
+/* COLOR PALETTE
   background: lighter: #cad2c5
   panels salaat: light: #84a98c
   base: #52796f
   big panel: dark: #354f52
   title: darker: #2f3e46
-  
+
   Night Mode
   background / panels salaat: #34495e
   text-color: #ecf0f1
@@ -149,10 +148,6 @@ button:hover {
         width: 100%;
     }
 
-    #live-clock {
-		font-size: xx-large;
-    }
-
     #container-menu {
         position: fixed;
         bottom: 16px;
@@ -208,9 +203,18 @@ button:hover {
 }
 
 #map {
-    height: 600px;
+    height: 100%;
     width: 100%;
     border-radius: 16px;
+}
+
+#container-map {
+    margin: 16px;
+	padding: 8px;
+	border-radius: 16px;
+	background-color: #52796f;
+    height: 60vh;  /* Changed to make it responsive */
+    width: 100%;
 }
 
 /* Night Mode */
@@ -225,8 +229,6 @@ body.night-mode .side-menu p {
     color: #ecf0f1;
 }
 
-body.night-mode #salaats,
-body.night-mode #method-select,
 body.night-mode button,
 body.night-mode .head,
 body.night-mode .side-menu  {
