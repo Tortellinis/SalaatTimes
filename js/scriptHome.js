@@ -1,4 +1,3 @@
-
 window.onload = displayClock();
 
 function displayClock() {
@@ -36,9 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
 const localTime = new Date().getHours();
 if (localTime >= 18 || localTime < 6) {
     document.body.classList.add('night-mode');
-    document.getElementById('menu').src = "../images/menu(1).png";
+    document.getElementById('menu').src = "../images/menu1.png";
 } else {
     document.body.classList.remove('night-mode');
     document.getElementById('menu').src = "../images/menu.png";
 }
-

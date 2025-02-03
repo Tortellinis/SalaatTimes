@@ -233,7 +233,7 @@ small {
   align-items: center;
 }
 
-.table-row .today {
+.today {
   background-color:#84a98c;
   color: #cad2c5;
 }
@@ -397,6 +397,6 @@ body.night-mode button:hover {
 }
 
 body.night-mode .side-menu p:hover {
-    background-color: #34495e;
-    color: #ecf0f1;
+  background-color: #34495e;
+  color: #ecf0f1;
 }
