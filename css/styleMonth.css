@@ -1,3 +1,4 @@
+/*SISTEMA LEGACY*/
 /* 
 COLOR PALETTE 
   background: lighter: #cad2c5
@@ -163,6 +164,13 @@ button:hover {
 	color: #2f3e46;
 	font-weight: bolder;
 	text-transform: uppercase;
+}
+
+#method-select:hover {
+  background-color: #52796f;
+  color: #b0bda8;
+  scale: 110% 110%;
+  transition-duration: 300ms;
 }
 
 h2 {
