@@ -1,13 +1,13 @@
 var map = L.map('map').setView([45.97194, 10.76738], 9);
 
-// Custom icon for mosques using a local image and a specific color for the marker
+// Custom icon for mosques
 var mosqueIcon = L.icon({
-    iconUrl: '../images/logo.png', // Path to your locally saved image
-    iconSize: [32, 32], // Size of the icon
-    iconAnchor: [16, 32], // Anchor the icon
-    popupAnchor: [0, -32], // Popup position relative to the icon
-    shadowUrl: null, // No shadow
-    className: 'custom-mosque-marker' // Custom class if needed for additional styling
+    iconUrl: '../images/logo.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
+    shadowUrl: null,
+    className: 'custom-mosque-marker'
 });
 
 // Add OpenStreetMap tile layer
@@ -24,19 +24,21 @@ if (window.mosques && Array.isArray(window.mosques)) {
     });
 }
 
-// Function to show user's location
 document.getElementById('get-location').addEventListener('click', function () {
     if (navigator.geolocation) {
-        // Request the user's location
+
         navigator.geolocation.getCurrentPosition(function (position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
             // Create a custom icon for the user's location
-            var userIcon = L.AwesomeMarkers.icon({
-                icon: 'fa-location-arrow', // Font Awesome icon for user location
-                markerColor: 'blue',
-                prefix: 'fa'
+            var userIcon = L.icon({
+                iconUrl: '../images/user4.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+                popupAnchor: [0, -32],
+                shadowUrl: null,
+                className: 'custom-user-marker'
             });
 
             // Create a marker for user's location and add to the map
@@ -54,7 +56,6 @@ document.getElementById('get-location').addEventListener('click', function () {
     }
 });
 
-// Toggle side menu visibility
 document.addEventListener("DOMContentLoaded", function () {
     const menuButton = document.getElementById("menu");
     const sideMenu = document.getElementById("side-menu");
@@ -63,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
         sideMenu.classList.toggle("visible");
     });
 
-    // Close side menu when clicking outside
     document.addEventListener("click", function (event) {
         const isClickInsideMenu = sideMenu && sideMenu.contains(event.target);
         const isClickInsideButton = menuButton.contains(event.target);

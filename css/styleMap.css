@@ -213,13 +213,12 @@ button:hover {
 	padding: 8px;
 	border-radius: 16px;
 	background-color: #52796f;
-    height: 60vh;  /* Changed to make it responsive */
+    height: 60vh;
     width: 100%;
 }
 
 /* Night Mode */
-body.night-mode,
-body.night-mode .salaat {
+body.night-mode {
 	background-color: #34495e;
 	color: #ecf0f1;
 }
