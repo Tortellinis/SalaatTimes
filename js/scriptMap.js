@@ -8,7 +8,7 @@ var mosqueIcon = L.icon({
     popupAnchor: [0, -32],
     shadowUrl: null,
     className: 'custom-mosque-marker'
-}); 
+});
 
 // Add OpenStreetMap tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
